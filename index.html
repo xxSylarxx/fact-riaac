@@ -220,10 +220,37 @@
         z-index: 1;
       }
 
-      .left img {
-        width: 40px;
+      .left .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin: 24px 0 28px;
         cursor: pointer;
+        position: relative;
+        width: 100%;
+      }
+
+      .left .logo-container img {
+        width: 40px;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 0 0 rgba(52, 152, 219, 0));
+      }
+
+      .left .logo-container:hover img {
+        animation: none;
+        transform: scale(1.15) rotate(5deg);
+        filter: drop-shadow(0 4px 8px rgba(52, 152, 219, 0.4));
+      }
+
+      .left .logo-container:active img {
+        animation: none;
+        transform: scale(0.95);
+      }
+
+      .sidebar.expanded .logo-container img {
+        animation: none;
+        transform: scale(1.1);
+        filter: drop-shadow(0 4px 12px rgba(52, 152, 219, 0.5));
       }
 
       .left button {
@@ -478,7 +505,9 @@
     </nav>
     <aside class="sidebar" id="sidebar">
       <div class="left">
-        <img src="logo2.png" id="menuToggle" />
+        <div class="logo-container" id="menuToggle">
+          <img src="logo2.png" />
+        </div>
         <button><i class="ai-home-alt1"></i></button>
         <button><i class="ai-plus"></i></button>
         <div>
