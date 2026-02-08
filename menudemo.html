@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Facturación</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: #1e1e2f;
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px 0;
+      position: fixed;
+    }
+
+    .sidebar-header {
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #f7c948;
+      margin-bottom: 20px;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu li {
+      position: relative;
+    }
+
+    .menu li a {
+      display: flex;
+      align-items: center;
+      color: #ccc;
+      padding: 12px 20px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .menu li a:hover {
+      background: #34344a;
+      color: #fff;
+    }
+
+    .menu li a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .submenu > a .arrow {
+      margin-left: auto;
+      transition: transform 0.3s;
+    }
+
+    .submenu ul {
+      display: none;
+      flex-direction: column;
+      background: #2a2a3d;
+    }
+
+    .submenu.open ul {
+      display: flex;
+    }
+
+    .submenu.open > a .arrow {
+      transform: rotate(180deg);
+    }
+
+    .submenu ul li a {
+      padding-left: 40px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: absolute;
+        z-index: 1000;
+        left: -100%;
+        transition: left 0.3s ease-in-out;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">Facturación</div>
+    <ul class="menu">
+      <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="#"><i class="fas fa-cash-register"></i> Punto de Venta (POS)</a></li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-file-invoice"></i> Comprobantes <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Factura</a></li>
+          <li><a href="#">Boleta</a></li>
+          <li><a href="#">Nota de Venta</a></li>
+          <li><a href="#">Nota de Crédito</a></li>
+          <li><a href="#">Nota de Débito</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-paper-plane"></i> Ventas <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Administrar Ventas</a></li>
+          <li><a href="#">Cotizaciones</a></li>
+          <li><a href="#">Consultar Comprobantes</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-cart-plus"></i> Compras <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Registrar Compra</a></li>
+          <li><a href="#">Proveedores</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-boxes"></i> Inventario <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Productos / Servicios</a></li>
+          <li><a href="#">Categorías</a></li>
+          <li><a href="#">Kardex</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-wallet"></i> Caja <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Apertura / Cierre</a></li>
+          <li><a href="#">Movimientos / Gastos</a></li>
+          <li><a href="#">Ver Cajas</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-truck"></i> Guías de Remisión <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Emitir Guía</a></li>
+          <li><a href="#">Retorno</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-calendar-alt"></i> Resumen Diario <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Crear / Ver</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-chart-line"></i> Reportes <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Ventas</a></li>
+          <li><a href="#">Compras</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#"><i class="fas fa-tools"></i> Configuración <i class="fas fa-chevron-down arrow"></i></a>
+        <ul>
+          <li><a href="#">Empresa</a></li>
+          <li><a href="#">Sucursales</a></li>
+          <li><a href="#">Usuarios / Roles</a></li>
+          <li><a href="#">Medidas</a></li>
+          <li><a href="#">Cuentas Bancarias</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <script>
+    document.querySelectorAll('.submenu > a').forEach(menu => {
+      menu.addEventListener('click', e => {
+        e.preventDefault();
+        const submenu = menu.parentElement;
+        submenu.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

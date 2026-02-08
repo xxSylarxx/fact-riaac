@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -195,11 +195,11 @@
         z-index: 99;
       }
 
-      .sidebar:hover {
+      .sidebar.expanded {
         width: 300px;
       }
 
-      .sidebar:hover .right {
+      .sidebar.expanded .right {
         width: 225px;
       }
 
@@ -223,6 +223,7 @@
       .left img {
         width: 40px;
         margin: 24px 0 28px;
+        cursor: pointer;
       }
 
       .left button {
@@ -371,7 +372,7 @@
         transition: margin-left 0.4s;
       }
 
-      .sidebar:hover ~ .content-wrapper {
+      .sidebar.expanded ~ .content-wrapper {
         margin-left: 340px;
       }
 
@@ -381,8 +382,8 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         padding: 30px;
         /* margin: 20px 24px 20px 0; */
-        margin-top:.6rem;
-        margin-right:1.5rem;
+        margin-top: 0.6rem;
+        margin-right: 1.5rem;
         min-height: calc(100vh - 109px);
       }
 
@@ -410,7 +411,9 @@
         background: var(--color-bg);
         border-radius: 12px;
         padding: 20px;
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
         cursor: pointer;
       }
 
@@ -473,9 +476,9 @@
         </div>
       </div>
     </nav>
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <div class="left">
-        <img src="logo2.png" />
+        <img src="logo2.png" id="menuToggle" />
         <button><i class="ai-home-alt1"></i></button>
         <button><i class="ai-plus"></i></button>
         <div>
@@ -495,52 +498,76 @@
           <nav>
             <button><i class="ai-dashboard"></i><span>Dashboard</span></button>
             <button>
-              <i class="ai-file"></i>  <span>Ventas</span
-              ><i class="ai-plus"></i>
+              <i class="ai-file"></i> <span>Ventas</span><i class="ai-plus"></i>
             </button>
             <ul class="submenu">
-              <a href="" style="text-decoration: none;color:#5d6674;"><li><i class="ai-file"></i><span>&nbsp;Emitir Boleta </span></li></a>
-              <a href="" style="text-decoration: none;color:#5d6674;"><li><i class="ai-file"></i><span>&nbsp;Emitir Factura</span></li></a>
-              <a href="" style="text-decoration: none;color:#5d6674;"><li><i class="ai-file"></i><span>&nbsp;Nota de Venta </span></li></a>
+              <a href="" style="text-decoration: none; color: #5d6674"
+                ><li>
+                  <i class="ai-file"></i><span>&nbsp;Emitir Boleta </span>
+                </li></a
+              >
+              <a href="" style="text-decoration: none; color: #5d6674"
+                ><li>
+                  <i class="ai-file"></i><span>&nbsp;Emitir Factura</span>
+                </li></a
+              >
+              <a href="" style="text-decoration: none; color: #5d6674"
+                ><li>
+                  <i class="ai-file"></i><span>&nbsp;Nota de Venta </span>
+                </li></a
+              >
             </ul>
-            <button><i class="ai-truck"></i><span>Guías de Remisión</span></button>
+            <button>
+              <i class="ai-truck"></i><span>Guías de Remisión</span>
+            </button>
           </nav>
         </div>
       </div>
     </aside>
+    <script>
+      // Toggle menu on logo click
+      document
+        .getElementById("menuToggle")
+        .addEventListener("click", function () {
+          document.getElementById("sidebar").classList.toggle("expanded");
+        });
+    </script>
     <div class="content-wrapper">
       <main class="main-content">
         <h1>Bienvenido al FACTURACIÓN RIAAC</h1>
         <p>Selecciona una sección en el menú lateral para comenzar.</p>
-        
+
         <div class="card-grid">
           <div class="card">
-            <i class="ai-file" style="font-size: 24px; color: #3498db;"></i>
+            <i class="ai-file" style="font-size: 24px; color: #3498db"></i>
             <h3>Facturas</h3>
             <p>Gestiona tus facturas electrónicas</p>
           </div>
           <div class="card">
-            <i class="ai-shipping-box-v1" style="font-size: 24px; color: #2ecc71;"></i>
+            <i
+              class="ai-shipping-box-v1"
+              style="font-size: 24px; color: #2ecc71"
+            ></i>
             <h3>Boletas</h3>
             <p>Emite boletas de venta</p>
           </div>
           <div class="card">
-            <i class="ai-truck" style="font-size: 24px; color: #e74c3c;"></i>
+            <i class="ai-truck" style="font-size: 24px; color: #e74c3c"></i>
             <h3>Guias de Remisión</h3>
             <p>Administra tus guías</p>
           </div>
           <div class="card">
-            <i class="ai-person" style="font-size: 24px; color: #9b59b6;"></i>
+            <i class="ai-person" style="font-size: 24px; color: #9b59b6"></i>
             <h3>Clientes</h3>
             <p>Administra tu lista de clientes</p>
           </div>
           <div class="card">
-            <i class="ai-data" style="font-size: 24px; color: #f39c12;"></i>
+            <i class="ai-data" style="font-size: 24px; color: #f39c12"></i>
             <h3>Reportes</h3>
             <p>Genera reportes de ventas</p>
           </div>
           <div class="card">
-            <i class="ai-gear" style="font-size: 24px; color: #34495e;"></i>
+            <i class="ai-gear" style="font-size: 24px; color: #34495e"></i>
             <h3>Configuración</h3>
             <p>Ajusta las preferencias del sistema</p>
           </div>
